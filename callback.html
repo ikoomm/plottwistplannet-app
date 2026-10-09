@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connection code · Plot Twist Planet Uploader</title><style>body{font-family:system-ui,Segoe UI,Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;line-height:1.6;color:#1b1f27;background:#fafbfc}h1{font-size:1.6rem}h2{font-size:1.15rem;margin-top:1.6em}a{color:#1f4f8f}code{background:#eef1f5;padding:2px 6px;border-radius:4px;word-break:break-all}footer{margin-top:3em;font-size:.85rem;color:#5b6475}</style></head><body>
+<h1>Connection code</h1><p id="msg">Reading the code from TikTok...</p><p><code id="code"></code></p><button id="copy" hidden>Copy code</button>
+<script>
+const q=new URLSearchParams(location.search);const code=q.get('code');const err=q.get('error')||q.get('error_description');
+const msg=document.getElementById('msg'),box=document.getElementById('code'),btn=document.getElementById('copy');
+if(code){msg.textContent='Copy this code and paste it into the uploader on your computer. It expires in a few minutes.';box.textContent=code;btn.hidden=false;
+btn.onclick=()=>navigator.clipboard.writeText(code).then(()=>btn.textContent='Copied').catch(()=>{const r=document.createRange();r.selectNodeContents(box);getSelection().removeAllRanges();getSelection().addRange(r);});}
+else if(err){msg.textContent='TikTok returned an error: '+err;}else{msg.textContent='No code in this address. Start the connection again from the uploader.';}
+</script></body></html>
